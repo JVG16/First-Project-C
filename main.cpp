@@ -6,25 +6,44 @@
 
 
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
 
 int main()
 {
-    char opcion=0;
+    int opcion=0;
 
     cout << "Menu Principal"<< endl;
-    cout << "1.Buscar Tarea"<< endl;
-    cout << "2.Mostrar todas las tareas" << endl;
+    cout << "1.Agregar Tareas"<< endl;
+    cout << "2.Buscar Tarea" << endl;
     cout << "3.Mostrar todas las tareas" << endl;
-    cout << "4.Eliminar tareas" << endl;
-    cout << "5.Salir del programa" << endl;
+    cout << "4.Eliminar Tareas" << endl;
+    cout << "5.Salir del Programa" << endl;
 
     cout << "Por favor digite un numero del 1 al 5" << endl;
     cin >> opcion;
 
-    return 0;
-     }
+    switch (opcion)
+{
+case 1:
 
+{
+ cout << "Agregar Tareas"<<endl;
+ int CantidadTareas=0;
 
+ do {
+    cout << "Ingrese la cantidad de tareas (entre 1 y 5): ";
+    cin >> CantidadTareas;
+
+    if (CantidadTareas < 1 || CantidadTareas > 5) {
+        cout << "La cantidad debe estar entre 1 y 5." << endl;
+    }
+
+ }while(CantidadTareas < 1 || CantidadTareas > 5);
+
+break;
+
+  return 0;
+}
 
