@@ -6,71 +6,80 @@
 
 
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
 
-int main()
+ int case1()
 {
-    int opcion=0;
-
-    cout << "Menu Principal"<< endl;
-    cout << "1.Agregar Tareas"<< endl;
-    cout << "2.Buscar Tarea" << endl;
-    cout << "3.Mostrar todas las tareas" << endl;
-    cout << "4.Eliminar Tareas" << endl;
-    cout << "5.Salir del Programa" << endl;
-    cout << "Por favor, digite una opcion" << endl;
-    cin >> opcion;
-
-
-    //PUNTO 1, AGREGAR TAREAS.
-
-    int CantidadTareas=0;
-
+    cout << "Agregar Tareas";
+  int CantTareas;
     do
     {
-        cout << "Ingrese la cantidad de tareas (entre 1 y 5): ";
-        cin >> CantidadTareas;
+        cout << "Ingrese la cantidad de tareas (entre 1 y 5): " << endl;;
+        cin >> CantTareas;
 
-        if (CantidadTareas < 1 || CantidadTareas > 5)
+        if (CantTareas < 1 || CantTareas > 5)
         {
             cout << "Cantidad de tareas fuera del rango" << endl;
         }
 
+}
+
+int main()
+{
+    int option;
+    int CantTareas;
+    do
+    {
+        cout << "Menu Principal."<< endl;
+        cout << "1.Agregar Tareas."<< endl;
+        cout << "2.Buscar Tarea." << endl;
+        cout << "3.Mostrar todas. las tareas" << endl;
+        cout << "4.Eliminar Tareas." << endl;
+        cout << "5.Salir del Programa." << endl;
+
+        cout << "Por favor digite un numero del 1 al 5" << endl;
+        cin >> option;
+        // TODO proteger option cuando se ingresa una letra
+
+        switch(option)
+        {
+        case 1:
+            case1(Tareas); // Aquí iría el código para la opción 1
+            break;
+
+
+
+
+
+
+        case 2:
+            cout << "\nHas seleccionado la Opcion 2\n";
+            // Aquí iría el código para la opción 2
+            break;
+
+        case 3:
+            cout << "\nHas seleccionado la Opcion 3\n";
+            // Aquí iría el código para la opción 3
+            break;
+
+        case 4:
+            cout << "\nHas seleccionado la Opcion 4\n";
+            // Aquí iría el código para la opción 4
+            break;
+
+        case 5:
+            cout << "Salir del programa.";
+            break;
+
+        default:
+            cout << "Opción no válida." << endl;
+        }
+
     }
-    while(CantidadTareas < 1 || CantidadTareas > 5);
-
-    //Información por tarea.
-
-    int codigo=0;
-    char NombreDescriptivo[10];
-    int HoraInicio [4];
-    int HoraFinal [4];
-
-    //Escrito (AGREGAR TAREAS).
-
-    cout << "----------------------------------------------------" << endl;
-    cout << "  Ingrese la cantidad de tareas que desea agregar: " ;
-    cin >> CantidadTareas;
-    cout << "---------------------------------------------------- " << endl;
-    cout << " Código de la tarea: " ;
-    cin >> codigo;
-    cout << " Nombre de la tarea: " ;
-    cin >> NombreDescriptivo;
-    cout << " Fecha de vencimiento dd/mm/aaaa: " << endl;
-    cout << " Hora de inicio: " ;
-    cout << " Hora de finalización: " << endl;
-
-    cout << " Desea regresar al menú principal (S/N): " << endl;
-
-
-
-
-
-
+    while(option != 5);   // Repetir hasta que elija salir (opción 5)
 
     return 0;
 }
-
-
 
