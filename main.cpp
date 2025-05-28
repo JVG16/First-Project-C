@@ -10,40 +10,60 @@
 
 using namespace std;
 
+void case1()
+{
+    cout << "\nFunction Opcion 1\n";
+    cout << "Ingrese la cantidad de tareas (entre 1 y 5): ";
+}
+
 int main()
 {
-    int opcion=0;
+    int option;
+    do
+    {
+        cout << "Menu Principal"<< endl;
+        cout << "1.Agregar Tareas"<< endl;
+        cout << "2.Buscar Tarea" << endl;
+        cout << "3.Mostrar todas las tareas" << endl;
+        cout << "4.Eliminar Tareas" << endl;
+        cout << "5.Salir del Programa" << endl;
 
-    cout << "Menu Principal"<< endl;
-    cout << "1.Agregar Tareas"<< endl;
-    cout << "2.Buscar Tarea" << endl;
-    cout << "3.Mostrar todas las tareas" << endl;
-    cout << "4.Eliminar Tareas" << endl;
-    cout << "5.Salir del Programa" << endl;
+        cout << "Por favor digite un numero del 1 al 5" << endl;
+        cin >> option;
+        // TODO proteger option cuando se ingresa una letra
 
-    cout << "Por favor digite un numero del 1 al 5" << endl;
-    cin >> opcion;
+        switch(option)
+        {
+        case 1:
+            case1(); // Aquí iría el código para la opción 1
+            break;
 
-    switch (opcion)
-{
-case 1:
+        case 2:
+            cout << "\nHas seleccionado la Opcion 2\n";
+            // Aquí iría el código para la opción 2
+            break;
 
-{
- cout << "Agregar Tareas"<<endl;
- int CantidadTareas=0;
+        case 3:
+            cout << "\nHas seleccionado la Opcion 3\n";
+            // Aquí iría el código para la opción 3
+            break;
 
- do {
-    cout << "Ingrese la cantidad de tareas (entre 1 y 5): ";
-    cin >> CantidadTareas;
+        case 4:
+            cout << "\nHas seleccionado la Opcion 4\n";
+            // Aquí iría el código para la opción 4
+            break;
 
-    if (CantidadTareas < 1 || CantidadTareas > 5) {
-        cout << "La cantidad debe estar entre 1 y 5." << endl;
+        case 5:
+            cout << "\nSaliendo del programa...\n";
+            break;
+
+        default:
+            cout << "\nOpcion no valida. Por favor, seleccione 1-5.\n";
+        }
+
     }
+    while(option != 5);   // Repetir hasta que elija salir (opción 5)
 
- }while(CantidadTareas < 1 || CantidadTareas > 5);
-
-break;
-
-  return 0;
+    return 0;
 }
 
