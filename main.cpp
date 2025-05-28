@@ -54,11 +54,11 @@ int main()
             break;
 
         case 5:
-            cout << "\nSaliendo del programa...\n";
+            cout << "Salir del programa";
             break;
 
         default:
-            cout << "\nOpcion no valida. Por favor, seleccione 1-5.\n";
+            cout << "Opción no válida" << endl;
         }
 
     }
