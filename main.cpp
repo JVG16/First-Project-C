@@ -6,7 +6,6 @@
 
 
 #include <iostream>
-#include <stdlib.h>
 
 using namespace std;
 
@@ -20,30 +19,58 @@ int main()
     cout << "3.Mostrar todas las tareas" << endl;
     cout << "4.Eliminar Tareas" << endl;
     cout << "5.Salir del Programa" << endl;
-
-    cout << "Por favor digite un numero del 1 al 5" << endl;
+    cout << "Por favor, digite una opcion" << endl;
     cin >> opcion;
 
-    switch (opcion)
-{
-case 1:
 
-{
- cout << "Agregar Tareas"<<endl;
- int CantidadTareas=0;
+    //PUNTO 1, AGREGAR TAREAS.
 
- do {
-    cout << "Ingrese la cantidad de tareas (entre 1 y 5): ";
-    cin >> CantidadTareas;
+    int CantidadTareas=0;
 
-    if (CantidadTareas < 1 || CantidadTareas > 5) {
-        cout << "La cantidad debe estar entre 1 y 5." << endl;
+    do
+    {
+        cout << "Ingrese la cantidad de tareas (entre 1 y 5): ";
+        cin >> CantidadTareas;
+
+        if (CantidadTareas < 1 || CantidadTareas > 5)
+        {
+            cout << "Cantidad de tareas fuera del rango" << endl;
+        }
+
     }
+    while(CantidadTareas < 1 || CantidadTareas > 5);
 
- }while(CantidadTareas < 1 || CantidadTareas > 5);
+    //Información por tarea.
 
-break;
+    int codigo=0;
+    char NombreDescriptivo[10];
+    int HoraInicio [4];
+    int HoraFinal [4];
 
-  return 0;
+    //Escrito (AGREGAR TAREAS).
+
+    cout << "----------------------------------------------------" << endl;
+    cout << "  Ingrese la cantidad de tareas que desea agregar: " ;
+    cin >> CantidadTareas;
+    cout << "---------------------------------------------------- " << endl;
+    cout << " Código de la tarea: " ;
+    cin >> codigo;
+    cout << " Nombre de la tarea: " ;
+    cin >> NombreDescriptivo;
+    cout << " Fecha de vencimiento dd/mm/aaaa: " << endl;
+    cout << " Hora de inicio: " ;
+    cout << " Hora de finalización: " << endl;
+
+    cout << " Desea regresar al menú principal (S/N): " << endl;
+
+
+
+
+
+
+
+    return 0;
 }
+
+
 
