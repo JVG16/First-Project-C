@@ -10,12 +10,6 @@
 
 using namespace std;
 
-void case1()
-{
-    cout << "\nFunction Opcion 1\n";
-    cout << "Ingrese la cantidad de tareas (entre 1 y 5): ";
-}
-
 int main()
 {
     int option;
@@ -32,14 +26,24 @@ int main()
         cin >> option;
         // TODO proteger option cuando se ingresa una letra
 
+        // valores hardcoded para hacer puntos 2 y 3
+        string matriz[3][4] =
+        {
+            {"1234", "Clasificar material", "20/02/2025", "35"},
+            {"6543", "Elaborar ensayo", "21/02/2025", "36"},
+            {"5555", "Presentar ensayo", "22/02/2025", "37"}
+        };
+
         switch(option)
         {
         case 1:
-            case1(); // Aquí iría el código para la opción 1
+        {
+            // nada
             break;
-
+        }
         case 2:
             cout << "\nHas seleccionado la Opcion 2\n";
+            cout << matriz[0][0] << endl;
             // Aquí iría el código para la opción 2
             break;
 
