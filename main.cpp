@@ -16,6 +16,8 @@ int main()
     do
     {
 
+
+
         cout << "Menu Principal" << endl;
         cout << "1.Agregar Tareas" << endl;
         cout << "2.Buscar Tarea" << endl;
@@ -84,6 +86,7 @@ int main()
             {
                 cout << "Tarea no encontrada";
             }
+
             break;
         }
 
@@ -95,13 +98,13 @@ int main()
             for (int i=0; i<3; i++)
             {
                 if(matriz[i][0]!= "")
-            {
-                MostrarTareas= true;
+                {
+                    MostrarTareas= true;
+
+                }
 
             }
-
-        }
-        if (!MostrarTareas)
+            if (!MostrarTareas)
             {
                 cout << " No hay tareas registradas " << endl;
             }
@@ -128,11 +131,56 @@ int main()
             }
 
             break;
+
         }
 
+        case 4: //Eliminar tarea.
 
-        case 4:
+        {
+            bool Encontrada = false ;
+
+            int TareaEliminar ; //Dígitos
+            char Comprobacion ;
+
+            cout << "  Digite el código de la tarea que desea eliminar  " << endl;
+            cin >> TareaEliminar;
+
+            for (int i=0; i<3; i++)
+            {
+                if (matriz[i][0] = TareaEliminar)
+                {
+                    Encontrada = true;
+
+                    cout << "¿Está seguro de que desea eliminar la tarea (S/N): "<< endl;
+                    cin >> Comprobacion;
+
+                    if (Comprobacion = "S")
+                    {
+
+                        // Vaciar los campos
+                        matriz[i][0] = "";
+                        matriz[i][1] = "";
+                        matriz[i][2] = "";
+                        matriz[i][3] = "";
+                        cout << "Tarea eliminada exitosamente." << endl;
+                    }
+
+                    else
+                    {
+                        cout << "No se desea eliminar tareas" << endl;
+                    }
+                }
+
+                break;
+            }
+            if (!Encontrada)
+            {
+                cout << "Tarea no encontrada." << endl;
+            }
+
             break;
+
+        }
 
         case 5:
             cout << "Salir del programa";
@@ -140,11 +188,15 @@ int main()
 
         default:
             cout << "Opción no válida" << endl;
-        }
 
-    }
-    while(option != 5);   // Repetir hasta que elija salir (opción 5)
+
+
+
+
+        }
+        while( option != 5);   // Repetir hasta que elija salir (opción 5)
+
 
     return 0 ;
-}
+
 
