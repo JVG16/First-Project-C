@@ -126,7 +126,53 @@ int main()
         }
 
         case 4:
+
+            {
+                string TareaEliminar;
+
+                cout << "Digite el código de la tarea que desea eliminar" << endl;
+                cin >> TareaEliminar;
+
+              for (int i = 0; i < 5; i++)
+            {
+                if (matriz[i][0] = TareaEliminar)
+                {
+                    Encontrada = true;
+                    break;
+                }
+            }
+
+            if (!Encontrada)
+            {
+                cout << "No hay una tarea registrada con ese código " << endl;
+            }
+
+             else
+            {
+                cout << " Eliminar tarea " << endl;
+
+                cout << "+--------------+----------+-----------------------------+-----------------------" << endl;
+
+                cout << "     Código         Nombre           Fecha Vencimiento     Minutos Invertidos" << endl;
+
+                cout << "+--------------+----------+-----------------------------+-----------------------" << endl;
+
+                for (int i = 0; i < 5; i++)
+                {
+                    if(matriz[i][0] != "")
+                    {
+                        cout << "    " << matriz[i][0];
+                        cout << "    " << matriz[i][1];
+                        cout << "    " << matriz[i][2];
+                        cout << "    " << matriz[i][3] << endl;
+                    }
+                }
+            }
+
             break;
+
+            }
+
 
         case 5:
             cout << "Salir del programa";
