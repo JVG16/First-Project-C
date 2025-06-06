@@ -16,8 +16,8 @@ int main()
     do
     {
 
-        cout << "Menu Principal"<< endl;
-        cout << "1.Agregar Tareas"<< endl;
+        cout << "Menu Principal" << endl;
+        cout << "1.Agregar Tareas" << endl;
         cout << "2.Buscar Tarea" << endl;
         cout << "3.Mostrar todas las tareas" << endl;
         cout << "4.Eliminar Tareas" << endl;
@@ -63,6 +63,11 @@ int main()
             {
                 Encontrada = true;
 
+                if(matriz[i][0]!= "S")
+                {
+                    Encontrada = true;
+
+
                 cout << "Tarea encontrada" << endl;
 
                 cout << "+--------------+----------------+-----------------------+-----------------------" << endl;
@@ -70,6 +75,57 @@ int main()
                 cout << "     Código         Nombre           Fecha Vencimiento     Minutos Invertidos" << endl;
 
                 cout << "+--------------+----------+-----------------------------+-----------------------" << endl;
+
+                for (int i = 0; i < 3; i++)
+                {
+
+                    cout << "    " << matriz[i][0];
+                    cout << "    " << matriz[i][1];
+                    cout << "    " << matriz[i][2];
+                    cout << "    " << matriz[i][3] ;
+                    break;
+                }
+            }
+
+            break;
+
+        }
+
+        case 4: //Eliminar tarea.
+
+        {
+            bool Encontrada = false ;
+
+             string EliminarTarea ; //Dígitos
+            char Comprobacion ;
+
+            cout << "  Digite el código de la tarea que desea eliminar  " << endl;
+            cin >> EliminarTarea;
+             for (int i=0; i<3; i++)
+            {
+                if (matriz[i][0] = EliminarTarea)
+                {
+                    bool Encontrada = true;
+
+                    cout << "¿Está seguro de que desea eliminar la tarea (S/N): "<< endl;
+                    cin >> Comprobacion;
+
+                    if (Comprobacion = "S")
+                    {
+
+                        // Vaciar los campos
+                        matriz[i][0] = "";
+                        matriz[i][1] = "";
+                        matriz[i][2] = "";
+                        matriz[i][3] = "";
+                        cout << "Tarea eliminada exitosamente." << endl;
+                    }
+
+                    else
+                    {
+                        cout << "No se desea eliminar tareas" << endl;
+                    }
+                }
 
 
                 cout << "     " << matriz[i][0] ;
@@ -103,8 +159,11 @@ break;
         default:
             cout << "Opción no válida" << endl;
              }
+}
 
-        }
+
+}
+
         while(option != 5);   // Repetir hasta que elija salir (opción 5)
 
         return 0 ;
