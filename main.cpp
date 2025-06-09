@@ -129,45 +129,33 @@ int main()
 
             {
                 string TareaEliminar;
+                bool Encontrada = false;
 
                 cout << "Digite el código de la tarea que desea eliminar" << endl;
                 cin >> TareaEliminar;
 
               for (int i = 0; i < 5; i++)
             {
-                if (matriz[i][0] = TareaEliminar)
+                if (matriz[i][0] == TareaEliminar)
                 {
-                    Encontrada = true;
-                    break;
+                    bool Encontrada = true;
+
+            for (int j = 0; j < 4; j++)
+            {
+                matriz[i][j] = "";
+            }
+
+            cout << "Tarea eliminada correctamente." << endl;
+            break;
+
                 }
             }
 
-            if (!Encontrada)
-            {
-                cout << "No hay una tarea registrada con ese código " << endl;
-            }
+        if (!Encontrada){
 
-             else
-            {
-                cout << " Eliminar tarea " << endl;
+           cout << "Tarea no registrada con ese código" << endl;
 
-                cout << "+--------------+----------+-----------------------------+-----------------------" << endl;
-
-                cout << "     Código         Nombre           Fecha Vencimiento     Minutos Invertidos" << endl;
-
-                cout << "+--------------+----------+-----------------------------+-----------------------" << endl;
-
-                for (int i = 0; i < 5; i++)
-                {
-                    if(matriz[i][0] != "")
-                    {
-                        cout << "    " << matriz[i][0];
-                        cout << "    " << matriz[i][1];
-                        cout << "    " << matriz[i][2];
-                        cout << "    " << matriz[i][3] << endl;
-                    }
-                }
-            }
+        }
 
             break;
 
