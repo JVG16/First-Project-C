@@ -40,136 +40,171 @@ int main()
         case 1:
         {
 
-            break;
-        }
-        case 2:
-        {
-            // Buscar código.
+            int Tareas;
 
-            string Buscar;
-            bool Encontrada = false ;
+            cout << "Digite la cantidad de tareas (1-5)" << endl;
+            cin >> Tareas;
 
-            cout << "Digite el código de la tarea que desea buscar." << endl;
-            cin >> Buscar;
-
-            for (int i = 0; i < 5; i++)
+            if (Tareas <1 || Tareas>5)
             {
-                if (matriz[i][0]==Buscar)
+                cout << "Opción inválida, vuelva a intentarlo" << endl;
+                return 0;
+            }
+
+
+            for (int i=0; i < Tareas; i++ )
+            {
+
+                int Codigo;
+                cout << "Código de la tarea (4 dígitos):" << endl;
+                cin >> Codigo;
+
+                char NombreDescriptivo;
+                cout << "Nombre de la tarea:" << endl;
+                cin >> NombreDescriptivo;
+
+                string Vencimiento;
+                cout << "Fecha de vencimiento (dd/mm/aaaa):" << endl;
+                cin >> Vencimiento;
+
+                string HoraInicio;
+                cout << "Hora de inicio (hh:mm):" << endl;
+                cin >> HoraInicio;
+
+                string HoraFinal;
+                cout << "Hora de finalización (hh:mm):" << endl;
+                cin >> HoraFinal;
+
+                break;
+            }
+            case 2:
+            {
+                // Buscar código.
+
+                string Buscar;
+                bool Encontrada = false ;
+
+                cout << "Digite el código de la tarea que desea buscar." << endl;
+                cin >> Buscar;
+
+                for (int i = 0; i < 5; i++)
                 {
-                    Encontrada = true;
+                    if (matriz[i][0]==Buscar)
+                    {
+                        Encontrada = true;
 
-                    cout << "Tarea encontrada" << endl;
+                        cout << "Tarea encontrada" << endl;
 
-                    cout << "+--------------+----------------+-----------------------+-----------------------" << endl;
+                        cout << "+--------------+----------------+-----------------------+-----------------------" << endl;
+
+                        cout << "     Código         Nombre           Fecha Vencimiento     Minutos Invertidos" << endl;
+
+                        cout << "+--------------+----------+-----------------------------+-----------------------" << endl;
+
+
+                        cout << "     " << matriz[i][0] ;
+                        cout << "        " << matriz[i][1] ;
+                        cout << "       " << matriz[i][2] ;
+                        cout << "        " << matriz[i][3] << " " ;
+                        break;
+                    }
+                }
+
+                if ( !Encontrada)
+                {
+                    cout << "Tarea no encontrada";
+                }
+                break;
+            }
+
+
+            case 3:
+            {
+                bool MostrarTareas= false;
+                for (int i=0; i<5; i++)
+                {
+                    if(matriz[i][0] != "")
+                    {
+                        MostrarTareas= true;
+                        break;
+                    }
+                }
+
+                if (!MostrarTareas)
+                {
+                    cout << " No hay tareas registradas " << endl;
+                }
+
+                else
+                {
+                    cout << " Mostrar tareas registradas " << endl;
+
+                    cout << "+--------------+----------+-----------------------------+-----------------------" << endl;
 
                     cout << "     Código         Nombre           Fecha Vencimiento     Minutos Invertidos" << endl;
 
                     cout << "+--------------+----------+-----------------------------+-----------------------" << endl;
 
-
-                    cout << "     " << matriz[i][0] ;
-                    cout << "        " << matriz[i][1] ;
-                    cout << "       " << matriz[i][2] ;
-                    cout << "        " << matriz[i][3] << " " ;
-                    break;
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if(matriz[i][0] != "")
+                        {
+                            cout << "    " << matriz[i][0];
+                            cout << "    " << matriz[i][1];
+                            cout << "    " << matriz[i][2];
+                            cout << "    " << matriz[i][3] << endl;
+                        }
+                    }
                 }
+
+                break;
             }
 
-            if ( !Encontrada)
+            case 4:
+
             {
-                cout << "Tarea no encontrada";
-            }
-            break;
-        }
+                string TareaEliminar;
+                bool Encontrada = false;
 
-
-        case 3:
-        {
-            bool MostrarTareas= false;
-            for (int i=0; i<5; i++)
-            {
-                if(matriz[i][0] != "")
-                {
-                    MostrarTareas= true;
-                    break;
-                }
-            }
-
-            if (!MostrarTareas)
-            {
-                cout << " No hay tareas registradas " << endl;
-            }
-
-            else
-            {
-                cout << " Mostrar tareas registradas " << endl;
-
-                cout << "+--------------+----------+-----------------------------+-----------------------" << endl;
-
-                cout << "     Código         Nombre           Fecha Vencimiento     Minutos Invertidos" << endl;
-
-                cout << "+--------------+----------+-----------------------------+-----------------------" << endl;
+                cout << "Digite el código de la tarea que desea eliminar" << endl;
+                cin >> TareaEliminar;
 
                 for (int i = 0; i < 5; i++)
                 {
-                    if(matriz[i][0] != "")
+                    if (matriz[i][0] == TareaEliminar)
                     {
-                        cout << "    " << matriz[i][0];
-                        cout << "    " << matriz[i][1];
-                        cout << "    " << matriz[i][2];
-                        cout << "    " << matriz[i][3] << endl;
+                        Encontrada = true;
+
+                        for (int j = 0; j < 4; j++)
+                        {
+                            matriz[i][j] = "";
+                        }
+
+                        cout << "Tarea eliminada correctamente." << endl;
+                        break;
                     }
                 }
-            }
 
-            break;
-        }
-
-        case 4:
-
-        {
-            string TareaEliminar;
-            bool Encontrada = false;
-
-            cout << "Digite el código de la tarea que desea eliminar" << endl;
-            cin >> TareaEliminar;
-
-            for (int i = 0; i < 5; i++)
-            {
-                if (matriz[i][0] == TareaEliminar)
+                if (!Encontrada) // <<< Encontrada = False
                 {
-                    Encontrada = true;
-
-                    for (int j = 0; j < 4; j++)
-                    {
-                        matriz[i][j] = "";
-                    }
-
-                    cout << "Tarea eliminada correctamente." << endl;
-                    break;
+                    cout << "Tarea no registrada con ese código" << endl;
                 }
+
+                break;
             }
 
-            if (!Encontrada) // <<< Encontrada = False
-            {
-                cout << "Tarea no registrada con ese código" << endl;
+
+            case 5:
+                cout << "Salir del programa";
+                break;
+
+            default:
+                cout << "Opción no válida" << endl;
             }
 
-            break;
         }
+       } while(option != 5);   // Repetir hasta que elija salir (opción 5)
 
-
-        case 5:
-            cout << "Salir del programa";
-            break;
-
-        default:
-            cout << "Opción no válida" << endl;
-        }
-
+        return 0 ;
     }
-    while(option != 5);   // Repetir hasta que elija salir (opción 5)
-
-    return 0 ;
-}
 
