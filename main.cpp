@@ -13,9 +13,18 @@ using namespace std;
 int main()
 {
     int option;
+
+    string matriz[5][4] =
+    {
+        {"1234", "Clasificar material", "20/02/2025", "35"},
+        {"6543", "Elaborar ensayo", "21/02/2025", "36"},
+        {"5555", "Presentar ensayo", "22/02/2025", "37"},
+        {"", "", "", ""},
+        {"", "", "", ""}
+    };
+
     do
     {
-
         cout << "Menu Principal"<< endl;
         cout << "1.Agregar Tareas"<< endl;
         cout << "2.Buscar Tarea" << endl;
@@ -25,15 +34,6 @@ int main()
 
         cout << "Por favor digite un numero del 1 al 5" << endl;
         cin >> option;
-
-        string matriz[5][4] =
-        {
-            {"1234", "Clasificar material", "20/02/2025", "35"},
-            {"6543", "Elaborar ensayo", "21/02/2025", "36"},
-            {"5555", "Presentar ensayo", "22/02/2025", "37"},
-            {"", "", "", ""},
-            {"", "", "", ""}
-        };
 
         switch(option)
         {
@@ -127,39 +127,36 @@ int main()
 
         case 4:
 
-            {
-                string TareaEliminar;
-                bool Encontrada = false;
+        {
+            string TareaEliminar;
+            bool Encontrada = false;
 
-                cout << "Digite el código de la tarea que desea eliminar" << endl;
-                cin >> TareaEliminar;
+            cout << "Digite el código de la tarea que desea eliminar" << endl;
+            cin >> TareaEliminar;
 
-              for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 if (matriz[i][0] == TareaEliminar)
                 {
-                    bool Encontrada = true;
+                    Encontrada = true;
 
-            for (int j = 0; j < 4; j++)
-            {
-                matriz[i][j] = "";
-            }
+                    for (int j = 0; j < 4; j++)
+                    {
+                        matriz[i][j] = "";
+                    }
 
-            cout << "Tarea eliminada correctamente." << endl;
-            break;
-
+                    cout << "Tarea eliminada correctamente." << endl;
+                    break;
                 }
             }
 
-        if (!Encontrada){
-
-           cout << "Tarea no registrada con ese código" << endl;
-
-        }
+            if (!Encontrada) // <<< Encontrada = False
+            {
+                cout << "Tarea no registrada con ese código" << endl;
+            }
 
             break;
-
-            }
+        }
 
 
         case 5:
