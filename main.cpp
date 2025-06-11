@@ -84,7 +84,9 @@ int main()
                 {
                     cout << "Nombre de la tarea:";
                     cin >> NombreDescriptivo;
-                    if (NombreDescriptivo == " ")
+                    // "", "          "
+                    // TRIM
+                    if (NombreDescriptivo == "")
                     {
                         cout << " No debe quedar el campo vacío " << endl ;
                     }
@@ -93,15 +95,21 @@ int main()
 
                 string Vencimiento;
                 cout << "Fecha de vencimiento(dd/mm/aaaa):";
+                // 00/59/0123
                 cin >> Vencimiento;
 
                 string HoraInicio;
                 cout << "Hora de inicio (hh:mm):";
+                // 99:65
                 cin >> HoraInicio;
 
                 string HoraFinal;
                 cout << "Hora de finalización (hh:mm):";
                 cin>> HoraFinal;
+
+                // Conversión minutos invertidos
+                int MinutosInvertidos;
+                // todo: MinutosInvertidos = HoraFinal - HoraInicio // libreria
 
                 //Tareas
 
@@ -120,9 +128,7 @@ int main()
                 }
 
 
-                // Conversión minutos invertidos
 
-                int MinutosInvertidos = 1;
 
 
                 //Asignar Matriz
@@ -132,7 +138,7 @@ int main()
                 matriz[i][2]= Vencimiento;
                 matriz[i][3]= HoraInicio;
                 matriz[i][4]= HoraFinal;
-                matriz[i][5]= MinutosInvertidos;
+                matriz[i][5]= to_string(MinutosInvertidos);
             }
 
             break;
