@@ -138,7 +138,6 @@ int main()
                 break;
             }
 
-
             case 2:
             {
                 // Buscar código.
