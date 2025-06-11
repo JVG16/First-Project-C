@@ -42,41 +42,103 @@ int main()
 
             int Tareas;
 
-            cout << "Digite la cantidad de tareas (1-5)" << endl;
-            cin >> Tareas;
-
-            if (Tareas <1 || Tareas>5)
+            do
             {
-                cout << "Opción inválida, vuelva a intentarlo" << endl;
-                return 0;
+
+                cout << "--------------------------------------------------------"<< endl;
+                cout << " Digite la cantidad de tareas (1-5): ";
+                cin >> Tareas;
+                cout << "--------------------------------------------------------"<< endl;
+
+                if (Tareas <1 || Tareas>5)
+                {
+                    cout << "Opción inválida, vuelva a intentarlo" << endl;
+
+                }
+
             }
+            while(Tareas <1 || Tareas>5);
 
 
             for (int i=0; i < Tareas; i++ )
+
             {
-
                 int Codigo;
-                cout << "Código de la tarea (4 dígitos):" << endl;
-                cin >> Codigo;
 
-                char NombreDescriptivo;
-                cout << "Nombre de la tarea:" << endl;
+                do
+                {
+                    cout << "Código de la tarea (4 dígitos): ";
+                    cin >> Codigo;
+
+                    if (Codigo < 1000 || Codigo > 9999)
+                    {
+                        cout << " El código debe de tener como máximo 4 dígitos " << endl ;
+                    }
+                }
+                while (Codigo < 1000 || Codigo > 9999);
+
+
+                string NombreDescriptivo;
+
+                do {
+                   cout << "Nombre de la tarea:";
                 cin >> NombreDescriptivo;
+                if (NombreDescriptivo == " "){
+                  cout << " No debe quedar el campo vacío " << endl ;
+                }
+                 }
+                while (NombreDescriptivo == " ");
 
-                string Vencimiento;
-                cout << "Fecha de vencimiento (dd/mm/aaaa):" << endl;
+                int Vencimiento;
+                cout << "Fecha de vencimiento(dd/mm/aaaa):";
                 cin >> Vencimiento;
 
                 string HoraInicio;
-                cout << "Hora de inicio (hh:mm):" << endl;
+                cout << "Hora de inicio (hh:mm):";
                 cin >> HoraInicio;
 
                 string HoraFinal;
-                cout << "Hora de finalización (hh:mm):" << endl;
-                cin >> HoraFinal;
+                cout << "Hora de finalización (hh:mm):";
+                cin>> HoraFinal;
+
+                //Tareas
+
+                string Regresar;
+
+
+                cout << "Desea regresar al menú principal S/N: ";
+                cin>> Regresar;
+                if(Regresar=="S"){
+                     cout << "Regresar al menú";
+                }
+               if(Regresar=="N"){
+                     cout << "Registrar nuevas tareas";
+                }
+
+
+                // Conversión minutos invertidos
+
+                int MinutosInvertidos;
+
+
+                //Matriz
+
+                string Matriz [4][3];
+
+                for (int i=0; i < Tareas; i++ )
+                {
+
+                    Matriz[i][0]=Codigo;
+                    Matriz[i][1]= NombreDescriptivo;
+                    Matriz[i][2]= Vencimiento;
+                    Matriz[i][3]= MinutosInvertidos;
+
+                }
 
                 break;
             }
+
+
             case 2:
             {
                 // Buscar código.
@@ -185,7 +247,7 @@ int main()
                     }
                 }
 
-                if (!Encontrada) // <<< Encontrada = False
+                if (!Encontrada)
                 {
                     cout << "Tarea no registrada con ese código" << endl;
                 }
@@ -203,8 +265,9 @@ int main()
             }
 
         }
-       } while(option != 5);   // Repetir hasta que elija salir (opción 5)
-
-        return 0 ;
     }
+    while(option != 5);
+
+    return 0 ;
+}
 
