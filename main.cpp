@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <string>  // Necesario para to_string()
 
 using namespace std;
 
@@ -14,13 +15,14 @@ int main()
 {
     int option;
 
-    string matriz[5][4] =
+    // codigo - nombre - fecha - hora inicio - hora fin - Minutos Invertidos
+    string matriz[5][6] =
     {
-        {"1234", "Clasificar material", "20/02/2025", "35"},
-        {"6543", "Elaborar ensayo", "21/02/2025", "36"},
-        {"5555", "Presentar ensayo", "22/02/2025", "37"},
-        {"", "", "", ""},
-        {"", "", "", ""}
+        {"", "", "", "", "", ""},
+        {"", "", "", "", "", ""},
+        {"", "", "", "", "", ""},
+        {"", "", "", "", "", ""},
+        {"", "", "", "", "", ""}
     };
 
     do
@@ -39,6 +41,99 @@ int main()
         {
         case 1:
         {
+            int Tareas;
+
+            do
+            {
+
+                cout << "--------------------------------------------------------"<< endl;
+                cout << " Digite la cantidad de tareas (1-5): ";
+                cin >> Tareas;
+                cout << "--------------------------------------------------------"<< endl;
+
+                if (Tareas <1 || Tareas>5)
+                {
+                    cout << "Opción inválida, vuelva a intentarlo" << endl;
+
+                }
+
+            }
+            while(Tareas <1 || Tareas>5);
+
+            for (int i=0; i < Tareas; i++ )
+
+            {
+                int Codigo;
+
+                do
+                {
+                    cout << "Código de la tarea (4 dígitos): ";
+                    cin >> Codigo;
+
+                    if (Codigo < 1000 || Codigo > 9999)
+                    {
+                        cout << " El código debe de tener como máximo 4 dígitos " << endl ;
+                    }
+                }
+                while (Codigo < 1000 || Codigo > 9999);
+
+
+                string NombreDescriptivo;
+
+                do
+                {
+                    cout << "Nombre de la tarea:";
+                    cin >> NombreDescriptivo;
+                    if (NombreDescriptivo == " ")
+                    {
+                        cout << " No debe quedar el campo vacío " << endl ;
+                    }
+                }
+                while (NombreDescriptivo == " ");
+
+                string Vencimiento;
+                cout << "Fecha de vencimiento(dd/mm/aaaa):";
+                cin >> Vencimiento;
+
+                string HoraInicio;
+                cout << "Hora de inicio (hh:mm):";
+                cin >> HoraInicio;
+
+                string HoraFinal;
+                cout << "Hora de finalización (hh:mm):";
+                cin>> HoraFinal;
+
+                //Tareas
+
+                string Regresar;
+
+
+                cout << "Desea regresar al menú principal S/N: ";
+                cin>> Regresar;
+                if(Regresar=="S")
+                {
+                    cout << "Regresar al menú";
+                }
+                if(Regresar=="N")
+                {
+                    cout << "Registrar nuevas tareas";
+                }
+
+
+                // Conversión minutos invertidos
+
+                int MinutosInvertidos = 1;
+
+
+                //Asignar Matriz
+                // codigo - nombre - fecha - hora inicio - hora fin - Minutos Invertidos
+                matriz[i][0]= to_string(Codigo);
+                matriz[i][1]= NombreDescriptivo;
+                matriz[i][2]= Vencimiento;
+                matriz[i][3]= HoraInicio;
+                matriz[i][4]= HoraFinal;
+                matriz[i][5]= MinutosInvertidos;
+            }
 
             break;
         }
@@ -70,7 +165,7 @@ int main()
                     cout << "     " << matriz[i][0] ;
                     cout << "        " << matriz[i][1] ;
                     cout << "       " << matriz[i][2] ;
-                    cout << "        " << matriz[i][3] << " " ;
+                    cout << "        " << matriz[i][6] << " " ;
                     break;
                 }
             }
@@ -117,7 +212,7 @@ int main()
                         cout << "    " << matriz[i][0];
                         cout << "    " << matriz[i][1];
                         cout << "    " << matriz[i][2];
-                        cout << "    " << matriz[i][3] << endl;
+                        cout << "    " << matriz[i][6] << endl;
                     }
                 }
             }
