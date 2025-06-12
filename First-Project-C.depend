@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1749438382 source:c:\gitjvg\first-project-c\main.cpp
+1749742379 source:c:\gitjvg\first-project-c\main.cpp
 	<iostream>
 	<stdlib.h>
+	<string>
 
