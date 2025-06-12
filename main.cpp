@@ -64,7 +64,7 @@ int main()
 
             {
 
-                //Código
+                //Código.
 
                 int codigo;
 
@@ -85,9 +85,12 @@ int main()
                 }
                 while (codigo < 1000 || codigo > 9999);
 
-                //Nombre de la tarea
+                //Nombre de la tarea.
 
                 string nombreDescriptivo;
+
+                cin.ignore();
+
                 do
                 {
                     cout << "Nombre de la tarea:";
@@ -100,7 +103,8 @@ int main()
                 }
                 while (nombreDescriptivo.empty());
 
-//Fecha vencimiento
+                //Fecha de vencimiento.
+
                 int dd, mm, aaaa;
                 char slach1, slach2;
                 bool esValida;
@@ -142,54 +146,78 @@ int main()
                 int horaInicio, minutosInicio;
                 char dosPuntos1;
                 bool tiempoInicio;
-        do{
-
-
-                cout << "Hora de inicio (hh:mm):";
-                cin >> horaInicio >> dosPuntos1 >> minutosInicio;
-                tiempoInicio=true;
-                if(dosPuntos1!=':')
+                do
                 {
-                    tiempoInicio=false;
+
+
+                    cout << "Hora de inicio (hh:mm):";
+                    cin >> horaInicio >> dosPuntos1 >> minutosInicio;
+                    tiempoInicio=true;
+
+                    if (horaInicio < 0 || horaInicio >23)
+                    {
+                        tiempoInicio=false;
+                    }
+                    if(dosPuntos1!=':')
+                    {
+                        tiempoInicio=false;
+                    }
+                    if (minutosInicio < 0 || minutosInicio >59)
+                    {
+                        tiempoInicio=false;
+                    }
+                    if(!tiempoInicio)
+                    {
+                        cout << "Debe escribir la hora de inicio en el formato: hh:mm " << endl;
+                    }
                 }
+                while(!tiempoInicio);
 
-                if(!tiempoInicio){
-                    cout << "Debe escribir la hora de inicio en el formato: hh:mm " << endl;
-                }
- }while(!tiempoInicio);
+                //Cálculo hora de finalización.
 
- //Cálculo hora de finalización.
-
-                 int horaFinal, minutosFinal;
+                int horaFinal, minutosFinal;
                 char dosPuntos2;
                 bool tiempoFinal;
-        do{
-                cout << "Hora de finalización (hh:mm):";
-                cin >> horaFinal >> dosPuntos2 >> minutosFinal;
-                tiempoFinal=true;
-                if(dosPuntos2!=':')
+                do
                 {
-                    tiempoFinal=false;
-                }
+                    cout << "Hora de finalización (hh:mm):";
+                    cin >> horaFinal >> dosPuntos2 >> minutosFinal;
+                    tiempoFinal=true;
 
-                if(!tiempoFinal){
-                    cout << "Debe escribir la hora de finalización en el formato: hh:mm " << endl;
+                    if (horaFinal < 0 || horaFinal >23)
+                    {
+                        tiempoFinal=false;
+                    }
+                    if(dosPuntos2!=':')
+                    {
+                        tiempoFinal=false;
+                    }
+
+                    if (minutosFinal < 0 || minutosFinal >59)
+                    {
+                        tiempoFinal=false;
+                    }
+
+                    if(!tiempoFinal)
+                    {
+                        cout << "Debe escribir la hora de finalización en el formato: hh:mm " << endl;
+                    }
                 }
- }while(!tiempoFinal);
+                while(!tiempoFinal);
 
                 // Conversión minutos invertidos.
 
                 int totalMinInicio = horaInicio * 60 + minutosInicio;
-    int totalMinFinal = horaFinal * 60 + minutosFinal;
+                int totalMinFinal = horaFinal * 60 + minutosFinal;
                 int minutosInvertidos;
 
-                if(totalMinFinal >= totalMinInicio){
+                if(totalMinFinal >= totalMinInicio)
+                {
                     minutosInvertidos= totalMinFinal-totalMinInicio;
+                    cout << "DENTRO minutosInvertidos" << minutosInvertidos;
                 }
 
-
                 string Regresar;
-
 
                 cout << "Desea regresar al menú principal S/N: ";
                 cin>> Regresar;
@@ -204,6 +232,7 @@ int main()
 
 
                 //Asignar Matriz
+
                 // codigo - nombre - fecha - hora inicio - hora fin - Minutos Invertidos
                 matriz[i][0]= to_string(codigo);
                 matriz[i][1]= nombreDescriptivo;
@@ -243,7 +272,7 @@ int main()
                     cout << "     " << matriz[i][0] ;
                     cout << "        " << matriz[i][1] ;
                     cout << "       " << matriz[i][2] ;
-                    cout << "        " << matriz[i][6] << " " ;
+                    cout << "        " << matriz[i][5] << " " ;
                     break;
                 }
             }
@@ -290,7 +319,7 @@ int main()
                         cout << "    " << matriz[i][0];
                         cout << "    " << matriz[i][1];
                         cout << "    " << matriz[i][2];
-                        cout << "    " << matriz[i][6] << endl;
+                        cout << "    " << matriz[i][5] << endl;
                     }
                 }
             }
