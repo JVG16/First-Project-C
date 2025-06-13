@@ -1,16 +1,26 @@
-// Universidad Estatal a Distancia.
-// Estudiante: Jimena Velásquez Gómez.
-// Asignatura: Introducción a la Programación.
-// Proyecto #1.
-// Temas 1 y 2.
-
+/*
+ Universidad Estatal a Distancia.
+ Estudiante: Jimena Velásquez Gómez.
+ Asignatura: Introducción a la Programación.
+ Proyecto #1.
+ Temas 1 y 2.
+ El siguiente programa se realiza con la intención de hacer un registro de tareas por parte del usuario.
+ Primeramente, el usuario ingresará a un menú donde tendrá que elegir una de las siguientes opciones: 1. Agregar tareas, 2. Buscar tareas,
+ 3. Mostrar todas las tareas, 4. Eliminar tareas y 5. Salir del programa.
+ La primera opción hara que el usuario ingrese los datos correspondientes (cantidad de tareas, el código, fecha de vencimiento, hora de inicio y hora final).
+ La segunda opción se buscará la tarea. La tercera opción mostrará la o las tareas registradas por el usuario. La cuarta opción se eliminará la o las tareas que el usuario desee y,
+finalmente, la quinta opción le permitirá al usuario salir del programa.
+Recursos utilizados:
+https://www.youtube.com/channel/UC7QoKU6bj1QbXQuNIjan82Q
+https://www.youtube.com/watch?v=W0LwcyOxu2M
+ */
 
 #include <iostream>
 #include <iomanip>
 #include <locale.h>
 #include <stdlib.h>
-#include <string>  // Necesario para to_string()
-#include <conio.h> // Fundamental para poder usar el getch()
+#include <string>
+#include <conio.h>
 
 
 using namespace std;
@@ -150,7 +160,7 @@ int main()
                     {
                         esValida = false;
                     }
-                    if (aaaa > 2025)
+                    if (aaaa < 1950 || aaaa > 2025)
                     {
                         esValida = false;
                     }
@@ -163,6 +173,13 @@ int main()
                 }
                 while(!esValida);
 
+                cout << "Vencimiento: "
+                     << setw(2) << setfill('0') << dd << "/"
+                     << setw(2) << setfill('0') << mm << "/"
+                     << setw(4) << aaaa << endl;
+
+
+
                 //Cálculo hora de inicio.
 
                 int horaInicio, minutosInicio;
@@ -170,7 +187,6 @@ int main()
                 bool tiempoInicio;
                 do
                 {
-
 
                     cout << "Hora de inicio (hh:mm):";
                     cin >> horaInicio >> dosPuntos1 >> minutosInicio;
@@ -246,6 +262,10 @@ int main()
                 }
                 while(!tiempoFinal);
 
+                cout << "Hora válida: "
+                     << setw(2) << setfill('0') << horaFinal << ":"
+                     << setw(2) << setfill('0') << minutosFinal << endl;
+
                 // Conversión minutos invertidos.
 
                 int totalMinInicio = horaInicio * 60 + minutosInicio;
@@ -258,20 +278,6 @@ int main()
                     cout << "DENTRO minutosInvertidos" << minutosInvertidos;
                 }
 
-                string Regresar;
-
-                cout << "Desea regresar al menú principal S/N: ";
-                cin>> Regresar;
-                if(Regresar=="S")
-                {
-                    cout << "Regresar al menú"<< endl;
-                }
-                if(Regresar=="N")
-                {
-                    cout << "Registrar nuevas tareas";
-                }
-
-
                 //Asignar Matriz
 
                 // codigo - nombre - fecha - hora inicio - hora fin - Minutos Invertidos
@@ -282,6 +288,33 @@ int main()
                 matriz[i][4]= to_string(horaFinal)+ ":" + to_string(minutosFinal);
                 matriz[i][5]= to_string(minutosInvertidos);
             }
+
+            for (int i=0; i < Tareas; i++)
+            {
+            }
+
+            cout << "La tarea fue registrada exitosamente." << endl;
+
+            string Regresar;
+
+            do
+            {
+                cout << "Desea regresar al menú principal S/N: ";
+                cin>> Regresar;
+                if(Regresar=="S")
+                {
+                    cout << " Regresar al menú principal "<< endl;
+                    break;
+                }
+                if(Regresar=="N")
+                {
+                    cout << " Puede iniciar el registro de una nueva tarea ";
+                    break;
+                }
+
+            }
+            while(true);
+
             getch();
             break;
         }
