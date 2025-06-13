@@ -6,13 +6,18 @@
 
 
 #include <iostream>
+#include <iomanip>
+#include <locale.h>
 #include <stdlib.h>
 #include <string>  // Necesario para to_string()
+#include <conio.h> // Fundamental para poder usar el getch()
+
 
 using namespace std;
 
 int main()
 {
+    setlocale(LC_CTYPE,"Spanish");
     int option;
 
     // codigo - nombre - fecha - hora inicio - hora fin - Minutos Invertidos
@@ -37,6 +42,12 @@ int main()
         cout << "Por favor digite un numero del 1 al 5" << endl;
         cin >> option;
 
+        if (cin.fail())
+        {
+            cin.clear();
+            while (cin.get() != '\n');
+        }
+
         switch(option)
         {
         case 1:
@@ -50,6 +61,12 @@ int main()
                 cout << " Digite la cantidad de tareas (1-5): ";
                 cin >> Tareas;
                 cout << "--------------------------------------------------------"<< endl;
+
+                if (cin.fail())
+                {
+                    cin.clear();
+                    while (cin.get() != '\n');
+                }
 
                 if (Tareas <1 || Tareas>5)
                 {
@@ -71,13 +88,12 @@ int main()
                 do
                 {
                     cout << "Código de la tarea (4 dígitos): ";
-                    while (!(cin >> codigo))
+                    if (!(cin >> codigo))
                     {
-                        cout << "Error: Ingrese solo números: ";
                         cin.clear();
-                        cin.ignore(10000);
+                        while (cin.get() != '\n');
+                        cout << "Error: Ingrese solo números." << endl;
                     }
-
                     if (codigo < 1000 || codigo > 9999)
                     {
                         cout << " El código debe de tener como máximo 4 dígitos " << endl ;
@@ -113,6 +129,12 @@ int main()
 
                     cout << "Fecha de vencimiento(dd/mm/aaaa):";
                     cin >> dd >> slach1 >> mm >> slach2 >> aaaa;
+
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        while (cin.get() != '\n');
+                    }
 
                     esValida=true;
 
@@ -152,6 +174,13 @@ int main()
 
                     cout << "Hora de inicio (hh:mm):";
                     cin >> horaInicio >> dosPuntos1 >> minutosInicio;
+
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        while (cin.get() != '\n');
+                    }
+
                     tiempoInicio=true;
 
                     if (horaInicio < 0 || horaInicio >23)
@@ -173,6 +202,12 @@ int main()
                 }
                 while(!tiempoInicio);
 
+                cout << "Hora válida: "
+                     << setw(2) << setfill('0') << horaInicio << ":"
+                     << setw(2) << setfill('0') << minutosInicio << endl;
+
+
+
                 //Cálculo hora de finalización.
 
                 int horaFinal, minutosFinal;
@@ -182,6 +217,12 @@ int main()
                 {
                     cout << "Hora de finalización (hh:mm):";
                     cin >> horaFinal >> dosPuntos2 >> minutosFinal;
+                    if (cin.fail())
+                    {
+                        cin.clear();
+                        while (cin.get() != '\n');
+                    }
+
                     tiempoFinal=true;
 
                     if (horaFinal < 0 || horaFinal >23)
@@ -223,7 +264,7 @@ int main()
                 cin>> Regresar;
                 if(Regresar=="S")
                 {
-                    cout << "Regresar al menú";
+                    cout << "Regresar al menú"<< endl;
                 }
                 if(Regresar=="N")
                 {
@@ -241,7 +282,7 @@ int main()
                 matriz[i][4]= to_string(horaFinal)+ ":" + to_string(minutosFinal);
                 matriz[i][5]= to_string(minutosInvertidos);
             }
-
+            getch();
             break;
         }
         case 2:
@@ -281,6 +322,8 @@ int main()
             {
                 cout << "Tarea no encontrada";
             }
+
+            getch();
             break;
         }
 
@@ -323,7 +366,7 @@ int main()
                     }
                 }
             }
-
+            getch();
             break;
         }
 
@@ -356,7 +399,7 @@ int main()
             {
                 cout << "Tarea no registrada con ese código" << endl;
             }
-
+            getch();
             break;
         }
 
@@ -371,7 +414,7 @@ int main()
 
     }
     while(option != 5);   // Repetir hasta que elija salir (opción 5)
-
+    getch();
     return 0 ;
 }
 

@@ -1,6 +1,9 @@
 # depslib dependency file v1.0
-1749742379 source:c:\gitjvg\first-project-c\main.cpp
+1749789145 source:c:\gitjvg\first-project-c\main.cpp
 	<iostream>
+	<iomanip>
+	<locale.h>
 	<stdlib.h>
 	<string>
+	<conio.h>
 
