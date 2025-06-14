@@ -49,7 +49,7 @@ int main()
         cout << "4.Eliminar Tareas" << endl;
         cout << "5.Salir del Programa" << endl;
 
-        cout << "Por favor digite un numero del 1 al 5" << endl;
+        cout << "Por favor digite un número del 1 al 5: ";
         cin >> option;
 
         if (cin.fail())
@@ -57,7 +57,7 @@ int main()
             cin.clear();
             while (cin.get() != '\n');
         }
-
+        cout << endl;
         switch(option)
         {
         case 1:
@@ -80,7 +80,7 @@ int main()
 
                 if (Tareas <1 || Tareas>5)
                 {
-                    cout << "Opción inválida, vuelva a intentarlo" << endl;
+                    cout << " Opción inválida, vuelva a intentarlo " << endl;
 
                 }
 
@@ -91,7 +91,7 @@ int main()
 
             {
 
-                //Código.
+                // Código.
 
                 int codigo;
 
@@ -102,11 +102,11 @@ int main()
                     {
                         cin.clear();
                         while (cin.get() != '\n');
-                        cout << "Error: Ingrese solo números." << endl;
+                        cout << "Opción inválida, vuelva a intentarlo" << endl;
                     }
                     if (codigo < 1000 || codigo > 9999)
                     {
-                        cout << " El código debe de tener como máximo 4 dígitos " << endl ;
+                        cout << "El código debe de tener como máximo 4 dígitos" << endl ;
                     }
                 }
                 while (codigo < 1000 || codigo > 9999);
@@ -119,7 +119,7 @@ int main()
 
                 do
                 {
-                    cout << "Nombre de la tarea:";
+                    cout << "Nombre de la tarea: ";
                     getline(cin,nombreDescriptivo);
 
                     if (nombreDescriptivo.empty())
@@ -132,12 +132,12 @@ int main()
                 //Fecha de vencimiento.
 
                 int dd, mm, aaaa;
-                char slach1, slach2;
+                char slach1,slach2;
                 bool esValida;
                 do
                 {
 
-                    cout << "Fecha de vencimiento(dd/mm/aaaa):";
+                    cout << "Fecha de vencimiento (dd/mm/aaaa):";
                     cin >> dd >> slach1 >> mm >> slach2 >> aaaa;
 
                     if (cin.fail())
@@ -152,6 +152,7 @@ int main()
                     {
                         esValida=false;
                     }
+
                     if (dd < 1 || dd > 31)
                     {
                         esValida = false;
@@ -169,18 +170,10 @@ int main()
                     {
                         cout << "Debe escribir la fecha en formato válido: dd/mm/aaaa" << endl;
                     }
-
                 }
                 while(!esValida);
 
-                cout << "Vencimiento: "
-                     << setw(2) << setfill('0') << dd << "/"
-                     << setw(2) << setfill('0') << mm << "/"
-                     << setw(4) << aaaa << endl;
-
-
-
-                //Cálculo hora de inicio.
+                // Cálculo hora de inicio.
 
                 int horaInicio, minutosInicio;
                 char dosPuntos1;
@@ -218,12 +211,6 @@ int main()
                 }
                 while(!tiempoInicio);
 
-                cout << "Hora válida: "
-                     << setw(2) << setfill('0') << horaInicio << ":"
-                     << setw(2) << setfill('0') << minutosInicio << endl;
-
-
-
                 //Cálculo hora de finalización.
 
                 int horaFinal, minutosFinal;
@@ -241,6 +228,11 @@ int main()
 
                     tiempoFinal=true;
 
+                    if(horaFinal!= '2')
+                    {
+                        esValida=false;
+                    }
+
                     if (horaFinal < 0 || horaFinal >23)
                     {
                         tiempoFinal=false;
@@ -249,7 +241,10 @@ int main()
                     {
                         tiempoFinal=false;
                     }
-
+                    if(minutosFinal!= '2')
+                    {
+                        esValida=false;
+                    }
                     if (minutosFinal < 0 || minutosFinal >59)
                     {
                         tiempoFinal=false;
@@ -262,10 +257,6 @@ int main()
                 }
                 while(!tiempoFinal);
 
-                cout << "Hora válida: "
-                     << setw(2) << setfill('0') << horaFinal << ":"
-                     << setw(2) << setfill('0') << minutosFinal << endl;
-
                 // Conversión minutos invertidos.
 
                 int totalMinInicio = horaInicio * 60 + minutosInicio;
@@ -275,12 +266,13 @@ int main()
                 if(totalMinFinal >= totalMinInicio)
                 {
                     minutosInvertidos= totalMinFinal-totalMinInicio;
-                    cout << "DENTRO minutosInvertidos" << minutosInvertidos;
+
                 }
 
-                //Asignar Matriz
+                // Asignar Matriz
 
-                // codigo - nombre - fecha - hora inicio - hora fin - Minutos Invertidos
+                // codigo - nombre - fecha - hora inicio - hora fin - Minutos Invertidos.
+
                 matriz[i][0]= to_string(codigo);
                 matriz[i][1]= nombreDescriptivo;
                 matriz[i][2]= to_string(dd) + "/" + to_string(mm) + "/" + to_string(aaaa);
@@ -291,7 +283,6 @@ int main()
 
             for (int i=0; i < Tareas; i++)
             {
-            }
 
             cout << "La tarea fue registrada exitosamente." << endl;
 
@@ -303,19 +294,212 @@ int main()
                 cin>> Regresar;
                 if(Regresar=="S")
                 {
-                    cout << " Regresar al menú principal "<< endl;
+                    cout << "Regresar al menú principal"<< endl;
                     break;
                 }
                 if(Regresar=="N")
                 {
-                    cout << " Puede iniciar el registro de una nueva tarea ";
-                    break;
-                }
+                    cout << "Puede iniciar el registro de una nueva tarea" << endl;
 
+                    cout << endl;
+
+                    // Código.
+
+                    int codigo;
+
+                    do
+                    {
+                        cout << "Código de la tarea (4 dígitos):";
+                        if (!(cin >> codigo))
+                        {
+                            cin.clear();
+                            while (cin.get() != '\n');
+                            cout << "Opción inválida, vuelva a intentarlo" << endl;
+                        }
+                        if (codigo < 1000 || codigo > 9999)
+                        {
+                            cout << "El código debe de tener como máximo 4 dígitos" << endl ;
+                        }
+                    }
+                    while (codigo < 1000 || codigo > 9999);
+
+                    // Nombre de la tarea.
+
+                    string nombreDescriptivo;
+
+                    cin.ignore();
+
+                    do
+                    {
+                        cout << "Nombre de la tarea:";
+                        getline(cin,nombreDescriptivo);
+
+                        if (nombreDescriptivo.empty())
+                        {
+                            cout << "No debe quedar el campo vacío" << endl;
+                        }
+                    }
+                    while (nombreDescriptivo.empty());
+
+                    // Fecha de vencimiento.
+
+                    int dd, mm, aaaa;
+                    char slach1,slach2;
+                    bool esValida;
+                    do
+                    {
+
+                        cout << "Fecha de vencimiento (dd/mm/aaaa):";
+                        cin >> dd >> slach1 >> mm >> slach2 >> aaaa;
+
+                        if (cin.fail())
+                        {
+                            cin.clear();
+                            while (cin.get() != '\n');
+                        }
+
+                        esValida=true;
+
+                        if(slach1!= '/' || slach2!= '/')
+                        {
+                            esValida=false;
+                        }
+
+                        if (dd < 1 || dd > 31)
+                        {
+                            esValida = false;
+                        }
+                        if (mm < 1 || mm > 12)
+                        {
+                            esValida = false;
+                        }
+                        if (aaaa < 1950 || aaaa > 2025)
+                        {
+                            esValida = false;
+                        }
+
+                        if (dd < 10 && dd >= 1)
+                        {
+                            esValida = false;
+                        }
+                        if (mm < 10 && mm >= 1)
+                        {
+
+                            esValida = false;
+                        }
+                        if (aaaa < 1000)
+                        {
+
+                            esValida = false;
+                        }
+                        if (!esValida)
+                        {
+                            cout << "Debe escribir la fecha en formato válido: dd/mm/aaaa" << endl;
+                        }
+
+                    }
+                    while(!esValida);
+
+                    // Cálculo hora de inicio.
+
+                    int horaInicio, minutosInicio;
+                    char dosPuntos1;
+                    bool tiempoInicio;
+                    do
+                    {
+
+                        cout << "Hora de inicio (hh:mm):";
+                        cin >> horaInicio >> dosPuntos1 >> minutosInicio;
+
+                        if (cin.fail())
+                        {
+                            cin.clear();
+                            while (cin.get() != '\n');
+                        }
+
+                        tiempoInicio=true;
+
+                        if (horaInicio < 0 || horaInicio >23)
+                        {
+                            tiempoInicio=false;
+                        }
+                        if(dosPuntos1!=':')
+                        {
+                            tiempoInicio=false;
+                        }
+                        if (minutosInicio < 0 || minutosInicio >59)
+                        {
+                            tiempoInicio=false;
+                        }
+                        if(!tiempoInicio)
+                        {
+                            cout << "Debe escribir la hora de inicio en el formato: hh:mm " << endl;
+                        }
+                    }
+                    while(!tiempoInicio);
+
+                    // Cálculo hora de finalización.
+
+                    int horaFinal, minutosFinal;
+                    char dosPuntos2;
+                    bool tiempoFinal;
+                    do
+                    {
+                        cout << "Hora de finalización (hh:mm):";
+                        cin >> horaFinal >> dosPuntos2 >> minutosFinal;
+                        if (cin.fail())
+                        {
+                            cin.clear();
+                            while (cin.get() != '\n');
+                        }
+
+                        tiempoFinal=true;
+
+                        if(horaFinal!= '2')
+                        {
+                            esValida=false;
+                        }
+
+                        if (horaFinal < 0 || horaFinal >23)
+                        {
+                            tiempoFinal=false;
+                        }
+                        if(dosPuntos2!=':')
+                        {
+                            tiempoFinal=false;
+                        }
+                        if(minutosFinal!= '2')
+                        {
+                            esValida=false;
+                        }
+                        if (minutosFinal < 0 || minutosFinal >59)
+                        {
+                            tiempoFinal=false;
+                        }
+
+                        if(!tiempoFinal)
+                        {
+                            cout << "Debe escribir la hora de finalización en el formato: hh:mm " << endl;
+                        }
+                    }
+                    while(!tiempoFinal);
+
+                    // Conversión minutos invertidos.
+
+                    int totalMinInicio = horaInicio * 60 + minutosInicio;
+                    int totalMinFinal = horaFinal * 60 + minutosFinal;
+                    int minutosInvertidos;
+
+                    if(totalMinFinal >= totalMinInicio)
+                    {
+                        minutosInvertidos= totalMinFinal-totalMinInicio;
+                    }
+                }
             }
             while(true);
-
+}
             getch();
+            cout << endl;
             break;
         }
         case 2:
@@ -340,16 +524,17 @@ int main()
 
                     cout << "     Código         Nombre           Fecha Vencimiento     Minutos Invertidos" << endl;
 
-                    cout << "+--------------+----------+-----------------------------+-----------------------" << endl;
+                    cout << "+--------------+----------------+-----------------------+-----------------------" << endl;
 
 
                     cout << "     " << matriz[i][0] ;
-                    cout << "        " << matriz[i][1] ;
-                    cout << "       " << matriz[i][2] ;
-                    cout << "        " << matriz[i][5] << " " ;
+                    cout << "           " << matriz[i][1] ;
+                    cout << "               " << matriz[i][2] ;
+                    cout << "                  " << matriz[i][5] << " " ;
                     break;
                 }
             }
+                cout << endl;
 
             if ( !Encontrada)
             {
@@ -375,31 +560,32 @@ int main()
 
             if (!MostrarTareas)
             {
-                cout << " No hay tareas registradas " << endl;
+                cout << "No hay tareas registradas" << endl;
             }
 
             else
             {
-                cout << " Mostrar tareas registradas " << endl;
+                cout << "Mostrar tareas registradas" << endl;
 
-                cout << "+--------------+----------+-----------------------------+-----------------------" << endl;
+                cout << "+--------------+-----------------+-----------------------------+--------------------------" << endl;
 
-                cout << "     Código         Nombre           Fecha Vencimiento     Minutos Invertidos" << endl;
+                cout << "     Código          Nombre            Fecha Vencimiento           Minutos Invertidos" << endl;
 
-                cout << "+--------------+----------+-----------------------------+-----------------------" << endl;
+                cout << "+--------------+-----------------+-----------------------------+--------------------------" << endl;
 
                 for (int i = 0; i < 5; i++)
                 {
                     if(matriz[i][0] != "")
                     {
                         cout << "    " << matriz[i][0];
-                        cout << "    " << matriz[i][1];
-                        cout << "    " << matriz[i][2];
-                        cout << "    " << matriz[i][5] << endl;
+                        cout << "          " << matriz[i][1];
+                        cout << "               " << matriz[i][2];
+                        cout << "                  " << matriz[i][5] << endl;
                     }
                 }
             }
             getch();
+            cout << endl;
             break;
         }
 
@@ -433,6 +619,7 @@ int main()
                 cout << "Tarea no registrada con ese código" << endl;
             }
             getch();
+            cout << endl;
             break;
         }
 
