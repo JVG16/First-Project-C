@@ -181,7 +181,6 @@ int main()
                 bool tiempoInicio;
                 do
                 {
-
                     cout << "Hora de inicio (hh:mm):";
                     cin >> horaInicio >> dosPuntos1 >> minutosInicio;
 
