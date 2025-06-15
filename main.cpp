@@ -162,7 +162,7 @@ int main()
                     {
                         esValida = false;
                     }
-                    if (aaaa < 1950 || aaaa > 2025)
+                    if (aaaa < 2025 || aaaa > 2025)
                     {
                         esValida = false;
                     }
@@ -228,11 +228,6 @@ int main()
 
                     tiempoFinal=true;
 
-                    if(horaFinal!= '2')
-                    {
-                        esValida=false;
-                    }
-
                     if (horaFinal < 0 || horaFinal >23)
                     {
                         tiempoFinal=false;
@@ -241,10 +236,7 @@ int main()
                     {
                         tiempoFinal=false;
                     }
-                    if(minutosFinal!= '2')
-                    {
-                        esValida=false;
-                    }
+
                     if (minutosFinal < 0 || minutosFinal >59)
                     {
                         tiempoFinal=false;
@@ -256,6 +248,8 @@ int main()
                     }
                 }
                 while(!tiempoFinal);
+
+
 
                 // Conversión minutos invertidos.
 
@@ -281,6 +275,40 @@ int main()
                 matriz[i][5]= to_string(minutosInvertidos);
 
                 ingTarea++;
+
+                cout << "Tarea agregada exitosamente." << endl;
+                char reg;
+
+                do
+                {
+                    cout << "¿Desea regresar al menú principal? (S/N)";
+                    cin >> reg;
+                    if (reg != 'S' && reg != 'N')
+                    {
+                        cout << "Opción no válida, vuelva a intentarlo." << endl;
+                    }
+                }
+                while (reg != 'S' && reg != 'N');
+
+                if (reg=='S')
+                {
+                    cout << "Regresar al menú principal." << endl;
+                    cout << endl;
+                    break;
+                }
+                if (reg=='N')
+                {
+                    if (ingTarea<Tareas)
+                    {
+                        cout << "Registrar otra tarea." << endl;
+                        cout << endl;
+                    }
+                    else
+                    {
+                        cout << "No hay tareas por registrar." << endl;
+                    }
+
+                }
             }
             getch();
             cout << endl;
@@ -288,6 +316,7 @@ int main()
         }
         case 2:
         {
+
 
             if(ingTarea==0)
             {
@@ -394,7 +423,7 @@ int main()
             }
 
         }
- break;
+        break;
         case 4:
         {
             if(ingTarea==0)
