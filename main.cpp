@@ -7,20 +7,23 @@
  El siguiente programa se realiza con la intención de hacer un registro de tareas por parte del usuario.
  Primeramente, el usuario ingresará a un menú donde tendrá que elegir una de las siguientes opciones: 1. Agregar tareas, 2. Buscar tareas,
  3. Mostrar todas las tareas, 4. Eliminar tareas y 5. Salir del programa.
- La primera opción hara que el usuario ingrese los datos correspondientes (cantidad de tareas, el código, fecha de vencimiento, hora de inicio y hora final).
+ La primera opción hará que el usuario ingrese los datos correspondientes (cantidad de tareas, el código, fecha de vencimiento, hora de inicio y hora final).
  La segunda opción se buscará la tarea. La tercera opción mostrará la o las tareas registradas por el usuario. La cuarta opción se eliminará la o las tareas que el usuario desee y,
 finalmente, la quinta opción le permitirá al usuario salir del programa.
-Recursos utilizados:
-https://www.youtube.com/channel/UC7QoKU6bj1QbXQuNIjan82Q
-https://www.youtube.com/watch?v=W0LwcyOxu2M
+
+Referencias:
+-Sesión Virtual 1 2do Cuatrimestre 2025 UNED. Tutor: Alexander Angelini M. Recuperado de: https://m.youtube.com/watch?v=W0LwcyOxu2M
+-Canal youtube programación c++ ATS https://www.youtube.com/channel/UC7QoKU6bj1QbXQuNIjan82Q
+- Víctor Galleho, YouTube, https://m.youtube.com/watch?v=aW7c7r9ErCg&t=185s&pp=2AG5AZACAQ%3D%3D
+-
+
  */
 
-#include <iostream>
-#include <iomanip>
-#include <locale.h>
-#include <stdlib.h>
-#include <string>
-#include <conio.h>
+#include <iostream> // Entrada y salida de datos.
+#include <iomanip> // Matriz
+#include <locale.h> // Formato del trabajo con tildes y ñ.
+#include <string> // Cadenas
+#include <conio.h> // Salir
 
 
 using namespace std;
@@ -31,7 +34,8 @@ int main()
     int option;
     int ingTarea=0;
 
-    // codigo - nombre - fecha - hora inicio - hora fin - Minutos Invertidos
+    // Código - Nombre - Fecha - Hora inicio - Hora fin - Minutos Invertidos.
+
     string matriz[5][6] =
     {
         {"", "", "", "", "", ""},
@@ -108,11 +112,13 @@ int main()
                     if (codigo < 1000 || codigo > 9999)
                     {
                         cout << "El código debe de tener como máximo 4 dígitos" << endl ;
+
                     }
                 }
                 while (codigo < 1000 || codigo > 9999);
 
-                //Nombre de la tarea.
+
+                // Nombre de la tarea.
 
                 string nombreDescriptivo;
 
@@ -130,7 +136,7 @@ int main()
                 }
                 while (nombreDescriptivo.empty());
 
-                //Fecha de vencimiento.
+                // Fecha de vencimiento.
 
                 int dd, mm, aaaa;
                 char slach1,slach2;
@@ -211,7 +217,7 @@ int main()
                 }
                 while(!tiempoInicio);
 
-                //Cálculo hora de finalización.
+                // Cálculo hora de finalización.
 
                 int horaFinal, minutosFinal;
                 char dosPuntos2;
@@ -265,7 +271,7 @@ int main()
 
                 // Asignar Matriz
 
-                // codigo - nombre - fecha - hora inicio - hora fin - Minutos Invertidos.
+                // Código - Nombre - Fecha - Hora inicio - Hora fin - Minutos Invertidos.
 
                 matriz[i][0]= to_string(codigo);
                 matriz[i][1]= nombreDescriptivo;
@@ -281,7 +287,7 @@ int main()
 
                 do
                 {
-                    cout << "¿Desea regresar al menú principal? (S/N)";
+                    cout << "¿Desea regresar al menú principal? (S/N):";
                     cin >> reg;
                     if (reg != 'S' && reg != 'N')
                     {
@@ -331,7 +337,7 @@ int main()
             string Buscar;
             bool Encontrada = false ;
 
-            cout << "Digite el código de la tarea que desea buscar." << endl;
+            cout << "Digite el código de la tarea que desea buscar: ";
             cin >> Buscar;
 
             for (int i = 0; i < 5; i++)
@@ -363,7 +369,6 @@ int main()
             {
                 cout << "Tarea no encontrada";
                 cout << endl;
-
             }
 
             getch();
@@ -394,6 +399,7 @@ int main()
             if (!MostrarTareas)
             {
                 cout << "No hay tareas registradas" << endl;
+                cout << endl;
             }
 
             else
@@ -410,10 +416,10 @@ int main()
                 {
                     if(matriz[i][0] != "")
                     {
-                        cout << "    " << matriz[i][0];
-                        cout << "           " << matriz[i][1];
-                        cout << "               " << matriz[i][2];
-                        cout << "                   " << matriz[i][5] << endl;
+                        cout << "     " << matriz[i][0];
+                        cout << "            " << matriz[i][1];
+                        cout << "                 " << matriz[i][2];
+                        cout << "                    " << matriz[i][5] << endl;
 
                         getch();
                         cout << endl;
@@ -438,7 +444,7 @@ int main()
             char conf;
             bool Encontrada = false;
 
-            cout << "Digite el código de la tarea que desea eliminar" << endl;
+            cout << "Digite el código de la tarea que desea eliminar: ";
             cin >> TareaEliminar;
 
             for (int i = 0; i < 5; i++)
@@ -449,12 +455,12 @@ int main()
 
                     do
                     {
-                        cout << "¿Está seguro de que desea eliminar la tarea \"" << matriz[i][1] << "\"? (S/N): ";
+                        cout << "¿Está seguro de que desea eliminar la tarea \"" << matriz[i][1] << "\" ? (S/N): ";
                         cin >> conf;
 
                         if (conf != 'S' && conf != 'N')
                         {
-                            cout << "Opción no válida. Debe responder con S o N." << endl;
+                            cout << "Opción no válida." << endl;
                         }
                     }
                     while (conf != 'S' && conf != 'N');
@@ -472,14 +478,14 @@ int main()
                     }
                     else
                     {
-                        cout << "Opción cancelada, la tarea no fue eliminada." << endl;
+                        cout << "La tarea no fue eliminada." << endl;
                         break;
                     }
                 }
 
             }
 
-            if (!Encontrada) // <<< Encontrada = False
+            if (!Encontrada)
             {
                 cout << "Tarea no registrada con ese código" << endl;
             }
@@ -490,6 +496,7 @@ int main()
 
         case 5:
             cout << "Salir del programa";
+            cout << endl;
             break;
 
         default:
@@ -497,7 +504,7 @@ int main()
         }
 
     }
-    while(option != 5);   // Repetir hasta que elija salir (opción 5)
+    while(option != 5);   // Repetir hasta que el usuario digite la opción 5.
     getch();
     return 0 ;
 }
