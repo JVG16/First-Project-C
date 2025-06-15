@@ -15,7 +15,6 @@ Referencias:
 -Sesión Virtual 1 2do Cuatrimestre 2025 UNED. Tutor: Alexander Angelini M. Recuperado de: https://m.youtube.com/watch?v=W0LwcyOxu2M
 -Canal youtube programación c++ ATS https://www.youtube.com/channel/UC7QoKU6bj1QbXQuNIjan82Q
 - Víctor Galleho, YouTube, https://m.youtube.com/watch?v=aW7c7r9ErCg&t=185s&pp=2AG5AZACAQ%3D%3D
--
 
  */
 
@@ -418,7 +417,7 @@ int main()
                     {
                         cout << "     " << matriz[i][0];
                         cout << "            " << matriz[i][1];
-                        cout << "                 " << matriz[i][2];
+                        cout << "                " << matriz[i][2];
                         cout << "                    " << matriz[i][5] << endl;
 
                         getch();
