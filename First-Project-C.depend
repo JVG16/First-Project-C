@@ -1,4 +1,5 @@
 # depslib dependency file v1.0
+<<<<<<< Updated upstream
 140731107034016 <<<<<<< Updated upstream
 
 1749951591 source:c:\gitjvg\first-project-c\main.cpp
@@ -10,6 +11,9 @@
 	<conio.h>
 
 1749873485 shed changes
+=======
+1749873485 source:c:\gitjvg\first-project-c\main.cpp
+>>>>>>> Stashed changes
 	<iostream>
 	<iomanip>
 	<locale.h>

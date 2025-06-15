@@ -333,6 +333,8 @@ int main()
             if ( !Encontrada)
             {
                 cout << "Tarea no encontrada";
+                cout << endl;
+
             }
 
             getch();
@@ -392,7 +394,7 @@ int main()
             }
 
         }
-
+ break;
         case 4:
         {
             if(ingTarea==0)
@@ -404,6 +406,7 @@ int main()
             }
 
             string TareaEliminar;
+            char conf;
             bool Encontrada = false;
 
             cout << "Digite el código de la tarea que desea eliminar" << endl;
@@ -415,14 +418,36 @@ int main()
                 {
                     Encontrada = true;
 
-                    for (int j = 0; j < 4; j++)
+                    do
                     {
-                        matriz[i][j] = "";
-                    }
+                        cout << "¿Está seguro de que desea eliminar la tarea \"" << matriz[i][1] << "\"? (S/N): ";
+                        cin >> conf;
 
-                    cout << "Tarea eliminada correctamente." << endl;
-                    break;
+                        if (conf != 'S' && conf != 'N')
+                        {
+                            cout << "Opción no válida. Debe responder con S o N." << endl;
+                        }
+                    }
+                    while (conf != 'S' && conf != 'N');
+
+
+                    if (conf=='S')
+                    {
+                        for (int j = 0; j < 4; j++)
+                        {
+                            matriz[i][j] = "";
+                        }
+
+                        cout << "Tarea eliminada correctamente." << endl;
+                        break;
+                    }
+                    else
+                    {
+                        cout << "Opción cancelada, la tarea no fue eliminada." << endl;
+                        break;
+                    }
                 }
+
             }
 
             if (!Encontrada) // <<< Encontrada = False
@@ -433,7 +458,6 @@ int main()
             cout << endl;
             break;
         }
-
 
         case 5:
             cout << "Salir del programa";
